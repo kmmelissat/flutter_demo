@@ -7,30 +7,75 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
+  // Custom color palette
+  static const Color _gunmetal = Color(0xFF2C383E);
+  static const Color _paynesGray = Color(0xFF586F7C);
+  static const Color _lightBlue = Color(0xFFB8DBD9);
+  static const Color _azure = Color(0xFFD6E8E9);
+  static const Color _ghostWhite = Color(0xFFF4F4F9);
+  static const Color _darkSpringGreen = Color(0xFF04724D);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+        colorScheme: ColorScheme.light(
+          // Primary colors
+          primary: _darkSpringGreen,
+          onPrimary: _ghostWhite,
+          primaryContainer: _lightBlue,
+          onPrimaryContainer: _gunmetal,
+
+          // Secondary colors
+          secondary: _paynesGray,
+          onSecondary: _ghostWhite,
+          secondaryContainer: _azure,
+          onSecondaryContainer: _gunmetal,
+
+          // Surface colors
+          surface: _ghostWhite,
+          onSurface: _gunmetal,
+          surfaceContainerHighest: _azure,
+
+          // Error colors (keeping default but with our palette)
+          error: Colors.red.shade700,
+          onError: _ghostWhite,
+        ),
+
+        // AppBar theme
+        appBarTheme: AppBarTheme(
+          backgroundColor: _darkSpringGreen,
+          foregroundColor: _ghostWhite,
+          elevation: 2,
+          shadowColor: _gunmetal.withValues(alpha: 0.3),
+        ),
+
+        // Card theme
+        cardTheme: CardThemeData(
+          color: _azure,
+          shadowColor: _gunmetal.withValues(alpha: 0.2),
+          elevation: 4,
+        ),
+
+        // Floating Action Button theme
+        floatingActionButtonTheme: FloatingActionButtonThemeData(
+          backgroundColor: _darkSpringGreen,
+          foregroundColor: _ghostWhite,
+        ),
+
+        // Text theme
+        textTheme: TextTheme(
+          headlineMedium: TextStyle(
+            color: _darkSpringGreen,
+            fontWeight: FontWeight.bold,
+          ),
+          bodyLarge: TextStyle(color: _gunmetal),
+          bodyMedium: TextStyle(color: _paynesGray),
+        ),
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'Custom Themed App'),
     );
   }
 }

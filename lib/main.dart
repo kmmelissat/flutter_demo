@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'theme.dart';
-import 'hero_section.dart';
+import 'app/theme.dart';
+import 'features/hero_section.dart';
 
 void main() {
   runApp(const MyApp());
@@ -40,12 +40,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -55,19 +49,9 @@ class _MyHomePageState extends State<MyHomePage> {
         centerTitle: false, // Aligns title to the left
       ),
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(20.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const SizedBox(height: 40),
-
-              // Hero Section
-              const HeroSection(),
-
-              const SizedBox(height: 30),
-            ],
-          ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [const HeroSection(), const SizedBox(height: 30)],
         ),
       ),
     );

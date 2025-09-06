@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: AppTheme.lightTheme,
-      home: const MyHomePage(title: 'Custom Themed App'),
+      home: const MyHomePage(title: 'Mi Primera App'),
     );
   }
 }
@@ -59,7 +59,13 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(title: Text(widget.title)),
+      appBar: AppBar(
+        title: Text(
+          widget.title,
+          style: const TextStyle(fontWeight: FontWeight.bold),
+        ),
+        centerTitle: false, // Aligns title to the left
+      ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.

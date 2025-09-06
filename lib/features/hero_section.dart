@@ -7,68 +7,87 @@ class HeroSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(30),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(20),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.1),
-            spreadRadius: 5,
-            blurRadius: 15,
-            offset: const Offset(0, 5),
-          ),
-        ],
-      ),
+      decoration: BoxDecoration(color: Colors.white),
       child: Column(
         children: [
-          // Profile Photo
-          Container(
-            width: 150,
-            height: 150,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              gradient: LinearGradient(
-                colors: [
-                  Theme.of(context).colorScheme.primary,
-                  Theme.of(context).colorScheme.secondary,
-                ],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-              ),
-              boxShadow: [
-                BoxShadow(
-                  color: Theme.of(context).colorScheme.primary.withOpacity(0.3),
-                  spreadRadius: 3,
-                  blurRadius: 10,
-                  offset: const Offset(0, 3),
+          // Profile Section - Photo and Info in Row
+          Row(
+            children: [
+              // Profile Photo
+              Container(
+                width: 80,
+                height: 80,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Theme.of(
+                        context,
+                      ).colorScheme.primary.withOpacity(0.3),
+                      spreadRadius: 3,
+                      blurRadius: 10,
+                      offset: const Offset(0, 3),
+                    ),
+                  ],
                 ),
-              ],
-            ),
-            child: const Icon(Icons.person, size: 80, color: Colors.white),
-          ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(40),
+                  child: Image.asset(
+                    'assets/images/profile.JPEG', // Your real image!
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) {
+                      // Fallback to gradient container if image fails to load
+                      return Container(
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          gradient: LinearGradient(
+                            colors: [
+                              Theme.of(context).colorScheme.primary,
+                              Theme.of(context).colorScheme.secondary,
+                            ],
+                            begin: Alignment.topLeft,
+                            end: Alignment.bottomRight,
+                          ),
+                        ),
+                        child: const Icon(
+                          Icons.person,
+                          size: 40,
+                          color: Colors.white,
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ),
 
-          const SizedBox(height: 25),
+              const SizedBox(width: 20),
 
-          // Name
-          Text(
-            'Sofia Martínez',
-            style: TextStyle(
-              fontSize: 28,
-              fontWeight: FontWeight.bold,
-              color: Theme.of(context).colorScheme.primary,
-            ),
-          ),
-
-          const SizedBox(height: 8),
-
-          // Title/Role
-          Text(
-            'Desarrolladora Flutter',
-            style: TextStyle(
-              fontSize: 16,
-              color: Theme.of(context).colorScheme.secondary,
-              fontWeight: FontWeight.w500,
-            ),
+              // Name and Role
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Melissa Solórzano',
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: Theme.of(context).colorScheme.primary,
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      'Desarrolladora Flutter',
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Theme.of(context).colorScheme.secondary,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
 
           const SizedBox(height: 20),
